@@ -14,6 +14,15 @@ class Demanda {
     LocalDate DataDeCriacao;
     LocalDate DataDeEncerramento;
     int PrazoEmDias;
+    Vector<Tarefa> Tarefas;
+}
+class Tarefa {
+    String Titulo;
+    String Descricao;
+    String Situacao = "NAO INICIADA";
+    String Prioridade = "DESPRIORIZADO";
+    LocalDate DataDeCriacao;
+    int PrazoEmDias;
 }
 
 class Client extends User {
@@ -51,7 +60,7 @@ class Client extends User {
 
         while(true) {
             System.out.println("Ola Cliente. O que deseja?");
-            System.out.println("[1] Solicitar software\n[2] Consultar demanda\n[3] Voltar para menu");
+            System.out.println("[1] Solicitar software\n[2] Consultar demanda\n[3] Entrar no chat\n[4] Voltar para menu");
             
             int Choice = DigitaInt();
             if(Choice == 1) {
@@ -67,24 +76,8 @@ class Client extends User {
 
 class Avaliador extends User {
 
-    public void consultarDemanda() throws Exception  {
-        System.out.println("Voce tem " + Demandas.size() + " demandas cadastradas:");
-        for(int i=0;i<Demandas.size();i++)
-        {
-            System.out.println("[" + i + "] " + Demandas.get(i).Titulo);
-        }
-        int DemandaSelecionada = DigitaInt();
-        System.out.println(Demandas.get(DemandaSelecionada).Titulo);
-        System.out.println(Demandas.get(DemandaSelecionada).Descricao);
-        System.out.println(Demandas.get(DemandaSelecionada).PrazoEmDias);
-        System.out.println(Demandas.get(DemandaSelecionada).Prioridade);
-        System.out.println(Demandas.get(DemandaSelecionada).Situacao);
-        System.out.println(Demandas.get(DemandaSelecionada).DataDeCriacao);
-        System.out.println(Demandas.get(DemandaSelecionada).DataDeEncerramento);
-    }
-
     public void editarDemanda() throws Exception  {
-        System.out.println("Editar demanda: " + Demandas.size());
+        System.out.println("Editar demanda:");
         for(int i=0;i<Demandas.size();i++)
         {
             System.out.println("[" + i + "] " + Demandas.get(i).Titulo);
@@ -117,7 +110,7 @@ class Avaliador extends User {
 
         while(true) {
             System.out.println("Ola Avaliador. O que deseja?");
-            System.out.println("[1] Visualizar demanda\n[2] Cancelar demanda\n[3] Editar demanda\n[4] Voltar para menu");
+            System.out.println("[1] Visualizar demanda\n[2] Cancelar demanda\n[3] Editar demanda\n[4] Entrar no chat\n[5] Voltar para menu");
             
             int Choice = DigitaInt();
             if(Choice == 1) {
@@ -132,19 +125,38 @@ class Avaliador extends User {
         }
     }
 }
+
 class Desenvolvedor extends User {
+
+    public void criarTarefaDaDemanda() throws Exception  {
+        System.out.println("Escolha uma tarefa:");
+        for(int i=0;i<Demandas.size();i++)
+        {
+            System.out.println("[" + i + "] " + Demandas.get(i).Titulo);
+        }
+        int DemandaSelecionada = DigitaInt();
+        Tarefa TarefaAtual = new Demanda();
+        System.out.println("Digite o nome da tarefa:");
+        TarefaAtual.Titulo = Digita();
+        System.out.println("Informe a descricao da tarefa:");
+        TarefaAtual.Descricao = Digita();
+        TarefaAtual.DataDeCriacao = LocalDate.now();
+        System.out.println("Informe o prazo em dias:");
+        TarefaAtual.PrazoEmDias = DigitaInt();
+        Demandas.get(DemandaSelecionada).Tarefas.add(TarefaAtual);
+    }
 
     public void desenvolvedorLoop() throws Exception  {
 
         while(true) {
             System.out.println("Ola Desenvolvedor. O que deseja?");
-            System.out.println("[1] Visualizar demanda\n[2] Cancelar demanda\n[3] Editar demanda\n[4] Voltar para menu");
+            System.out.println("[1] Visualizar demanda\n[2] Criar tarefa da demanda\n[3] Entrar no chat\n[4] Voltar para menu");
             
             int Choice = DigitaInt();
             if(Choice == 1) {
                 this.consultarDemanda();
             } else if (Choice == 2) {
-                this.deletarDemanda();
+                this.criarTarefaDaDemanda();
             }  else if (Choice == 3) {
                 this.editarDemanda();
             } else {
@@ -156,6 +168,22 @@ class Desenvolvedor extends User {
 
 class User {
     Vector<Demanda> Demandas = new Vector<Demanda>();
+
+    public void consultarDemanda() throws Exception  {
+        System.out.println("Voce tem " + Demandas.size() + " demandas cadastradas:");
+        for(int i=0;i<Demandas.size();i++)
+        {
+            System.out.println("[" + i + "] " + Demandas.get(i).Titulo);
+        }
+        int DemandaSelecionada = DigitaInt();
+        System.out.println(Demandas.get(DemandaSelecionada).Titulo);
+        System.out.println(Demandas.get(DemandaSelecionada).Descricao);
+        System.out.println(Demandas.get(DemandaSelecionada).PrazoEmDias);
+        System.out.println(Demandas.get(DemandaSelecionada).Prioridade);
+        System.out.println(Demandas.get(DemandaSelecionada).Situacao);
+        System.out.println(Demandas.get(DemandaSelecionada).DataDeCriacao);
+        System.out.println(Demandas.get(DemandaSelecionada).DataDeEncerramento);
+    }
 
     public static String Digita() throws Exception {
         BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
