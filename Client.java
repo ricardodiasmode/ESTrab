@@ -5,12 +5,12 @@ class Client extends User {
         Demanda SoftwareAtual = new Demanda();
 
         System.out.println("Informe o titulo do software:");
-        SoftwareAtual.Titulo = Digita();
+        SoftwareAtual.setTitulo(Digita());
         System.out.println("Informe a descricao do software:");
-        SoftwareAtual.Descricao = Digita();
-        SoftwareAtual.DataDeCriacao = LocalDate.now();
+        SoftwareAtual.setDescricao(Digita());
+        SoftwareAtual.setDataDeCriacao(LocalDate.now());
         System.out.println("Informe o prazo em dias:");
-        SoftwareAtual.PrazoEmDias = DigitaInt();
+        SoftwareAtual.setPrazoEmDias(DigitaInt());
 
         return SoftwareAtual;
     }

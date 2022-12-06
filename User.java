@@ -3,12 +3,12 @@ import java.io.InputStreamReader;
 import java.util.Vector;
 
 public class User {
-    Vector<Demanda> Demandas = new Vector<Demanda>();
+    protected Vector<Demanda> Demandas = new Vector<Demanda>();
 
     public void printarDemandas() throws Exception {
         for(int i=0;i<Demandas.size();i++)
         {
-            System.out.println("[" + i + "] " + Demandas.get(i).Titulo);
+            System.out.println("[" + i + "] " + Demandas.get(i).getTitulo());
         }
     }
 
@@ -18,17 +18,17 @@ public class User {
         if(Demandas.size() > 0) {
             int IndexDemandaSelecionada = DigitaInt();
             Demanda DemandaSelecionada = Demandas.get(IndexDemandaSelecionada);
-            System.out.println("Titulo: " + DemandaSelecionada.Titulo);
-            System.out.println("Descricao: " + DemandaSelecionada.Descricao);
-            System.out.println("Prazo em dias: " + DemandaSelecionada.PrazoEmDias);
-            System.out.println("Prioridade: " + DemandaSelecionada.Prioridade);
-            System.out.println("Situacao: " + DemandaSelecionada.Situacao);
-            System.out.println("Data de criacao: " + DemandaSelecionada.DataDeCriacao);
-            System.out.println("Data de encerramento: " + DemandaSelecionada.DataDeEncerramento);
+            System.out.println("Titulo: " + DemandaSelecionada.getTitulo());
+            System.out.println("Descricao: " + DemandaSelecionada.getDescricao());
+            System.out.println("Prazo em dias: " + DemandaSelecionada.getPrazoEmDias());
+            System.out.println("Prioridade: " + DemandaSelecionada.getPrioridade());
+            System.out.println("Situacao: " + DemandaSelecionada.getSituacao());
+            System.out.println("Data de criacao: " + DemandaSelecionada.getDataDeCriacao());
+            System.out.println("Data de encerramento: " + DemandaSelecionada.getDataDeEncerramento());
             if(this instanceof Desenvolvedor) {
                 System.out.println("Tarefas: ");
-                for(int i=0;i<DemandaSelecionada.Tarefas.size();i++) {
-                    System.out.println("[" + i + "]" + DemandaSelecionada.Tarefas.get(i).Titulo);
+                for(int i=0;i<DemandaSelecionada.getTarefas().size();i++) {
+                    System.out.println("[" + i + "]" + DemandaSelecionada.getTarefas().get(i).getTitulo());
                 }
             }
         }
@@ -44,7 +44,7 @@ public class User {
     }
     public static int DigitaInt() throws Exception {
         BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
-
+        
         int entradaDoTeclado = buff.read();
 
         return entradaDoTeclado-48;

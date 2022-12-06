@@ -8,13 +8,13 @@ class Desenvolvedor extends User {
         int DemandaSelecionada = DigitaInt();
         Tarefa TarefaAtual = new Tarefa();
         System.out.println("Digite o nome da tarefa:");
-        TarefaAtual.Titulo = Digita();
+        TarefaAtual.setTitulo(Digita());
         System.out.println("Informe a descricao da tarefa:");
-        TarefaAtual.Descricao = Digita();
-        TarefaAtual.DataDeCriacao = LocalDate.now();
+        TarefaAtual.setDescricao(Digita());
+        TarefaAtual.setDataDeCriacao(LocalDate.now());
         System.out.println("Informe o prazo em dias:");
-        TarefaAtual.PrazoEmDias = DigitaInt();
-        Demandas.get(DemandaSelecionada).Tarefas.add(TarefaAtual);
+        TarefaAtual.setPrazoEmDias(DigitaInt());
+        Demandas.get(DemandaSelecionada).getTarefas().add(TarefaAtual);
     }
 
     public void desenvolvedorLoop() throws Exception  {
