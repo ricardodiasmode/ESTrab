@@ -9,12 +9,12 @@ class Avaliador extends User {
 
         Demanda SoftwareAtual = Demandas.get(DemandaSelecionada);
         System.out.println("Informe o titulo do software:");
-        SoftwareAtual.Titulo = Digita();
+        SoftwareAtual.setTitulo(Digita());
         System.out.println("Informe a descricao do software:");
-        SoftwareAtual.Descricao = Digita();
-        SoftwareAtual.DataDeCriacao = LocalDate.now();
+        SoftwareAtual.setDescricao(Digita());
+        SoftwareAtual.setDataDeCriacao(LocalDate.now());
         System.out.println("Informe o prazo em dias:");
-        SoftwareAtual.PrazoEmDias = DigitaInt();
+        SoftwareAtual.setPrazoEmDias(DigitaInt());
         Demandas.insertElementAt(SoftwareAtual, DemandaSelecionada);
         Demandas.remove(DemandaSelecionada+1);
     }
@@ -23,7 +23,7 @@ class Avaliador extends User {
         System.out.println("Deletar demanda: " + Demandas.size());
         for(int i=0;i<Demandas.size();i++)
         {
-            System.out.println("[" + i + "] " + Demandas.get(i).Titulo);
+            System.out.println("[" + i + "] " + Demandas.get(i).getTitulo());
         }
         int DemandaSelecionada = DigitaInt();
         Demandas.remove(DemandaSelecionada);
@@ -43,6 +43,7 @@ class Avaliador extends User {
             }  else if (Choice == 3) {
                 this.editarDemanda();
             } else {
+            	System.out.println("Error character Typed: " + Choice);
                 break;
             }
         }

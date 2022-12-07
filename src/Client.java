@@ -1,16 +1,17 @@
 import java.time.LocalDate;
 
 class Client extends User {
+    
     public Demanda solicitarSoftware() throws Exception  {
         Demanda SoftwareAtual = new Demanda();
 
         System.out.println("Informe o titulo do software:");
-        SoftwareAtual.Titulo = Digita();
+        SoftwareAtual.setTitulo(Digita());
         System.out.println("Informe a descricao do software:");
-        SoftwareAtual.Descricao = Digita();
-        SoftwareAtual.DataDeCriacao = LocalDate.now();
+        SoftwareAtual.setDescricao(Digita());
+        SoftwareAtual.setDataDeCriacao(LocalDate.now());
         System.out.println("Informe o prazo em dias:");
-        SoftwareAtual.PrazoEmDias = DigitaInt();
+        SoftwareAtual.setPrazoEmDias(DigitaInt());
 
         return SoftwareAtual;
     }
@@ -27,6 +28,7 @@ class Client extends User {
             } else if (Choice == 2){
                 this.consultarDemanda();
             } else {
+            	System.out.println("Error character Typed: " + Choice);
                 break;
             }
         }
