@@ -6,11 +6,11 @@ public class User {
     protected Vector<Demanda> Demandas = new Vector<Demanda>();
 
     public Vector<Demanda> getDemandas() {
-		return Demandas;
+		return this.Demandas;
 	}
 
 	public void setDemandas(Demanda demandas) {
-		Demandas.add(demandas);
+		this.Demandas.add(demandas);
 	}
 
 	public void printarDemandas() throws Exception {

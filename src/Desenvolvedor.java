@@ -28,6 +28,11 @@ class Desenvolvedor extends User {
                 this.consultarDemanda();
             } else if (Choice == 2) {
                 this.criarTarefaDaDemanda();
+            } else if (Choice == 3){ 
+                System.out.println("Comming Soon!");
+                break;
+            } else if (Choice == 4){
+                break;
             } else {
             	System.out.println("Error character Typed: " + Choice);
                 break;

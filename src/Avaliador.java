@@ -42,6 +42,11 @@ class Avaliador extends User {
                 this.deletarDemanda();
             }  else if (Choice == 3) {
                 this.editarDemanda();
+            } else if (Choice == 4){ 
+                System.out.println("Comming Soon!");
+                break;
+            } else if (Choice == 5){
+                break;
             } else {
             	System.out.println("Error character Typed: " + Choice);
                 break;
