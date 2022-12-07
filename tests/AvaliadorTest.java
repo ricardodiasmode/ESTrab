@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -63,5 +64,30 @@ class AvaliadorTest {
 		assertTrue(output.contains("Deletar demanda: 1"));
 		assertTrue(output.contains("[0] "+titulo+"\n"));
 		assertEquals(0, avaliador.getDemandas().size());
+	}
+
+    @Ignore
+	@Test
+	void testEditarSoftware() throws Exception {
+		final String nameTask = "First Task";
+		final String descTask = "Creating My First Task";
+		final String deadlineTask = "60";
+		
+		Client clientTest = new Client();
+		Demanda	newDemanda = new Demanda();
+        newDemanda.setTitulo("Demanda Teste");
+        newDemanda.setDescricao("Demanda criada para testes");
+        newDemanda.setPrazoEmDias(30);
+
+		// Realizar mock das entradas do usuário 
+		clientTest.editarDemanda();
+        when(Client.Digita()).thenReturn(nameTask);
+        when(Client.Digita()).thenReturn(descTask);
+        when(Client.Digita()).thenReturn(deadlineTask);
+
+        // Validar se as alterações foram relamente feitas
+		assertEquals(nameTask, newDemanda.getTitulo());
+		assertEquals(descTask, newDemanda.getDescricao());
+		assertEquals(deadlineTask, newDemanda.getPrazoEmDias());
 	}
 }

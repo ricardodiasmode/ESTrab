@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +35,25 @@ class DesenvolvedorTest {
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
+
+    @Ignore
+	@Test
+	void testCriarTarefaDaDemanda() throws Exception {
+		final String nameTask = "First Task";
+		final String descTask = "Creating My First Task";
+		final String deadlineTask = "30";
+		
+		Desenvolvedor developer = new Desenvolvedor();
+
+		// Realizar mock das entradas do usuário 
+		developer.criarTarefaDaDemanda();
+        when(Client.Digita()).thenReturn(nameTask);
+        when(Client.Digita()).thenReturn(descTask);
+        when(Client.Digita()).thenReturn(deadlineTask);
+		
+        // Verificar se a tarefa foi criada
+		assertEquals(1, developer.getDemandas().size());
+	}
 	
 	@Test
 	void testDesenvolvedorLoopException() throws Exception {
