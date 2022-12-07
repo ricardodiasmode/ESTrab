@@ -57,7 +57,8 @@ class ClientTest {
 	@Test
 	void testClientLoopException() throws Exception {
 		provideInput("6");
-		User.userLoop();
+		Client cliente = new Client();
+		cliente.clientLoop();
 		
 		String output = getOutput();
 		assertTrue(output.contains("Ola Cliente. O que deseja?"));
