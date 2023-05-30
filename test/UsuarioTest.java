@@ -41,7 +41,7 @@ class UserTest {
 		
 		provideInput(input);
 
-		assertEquals(input, User.Digita());
+		assertEquals(input, Usuario.Digita());
 	}
 	
 	@Test
@@ -50,12 +50,12 @@ class UserTest {
 
 		provideInput(input);
 
-		assertEquals(9, User.DigitaInt());
+		assertEquals(9, Usuario.lerInputInteiro());
 	}
 
 	@Test
 	void testPrintarDemandas() throws Exception {
-		User usuario = new User();
+		Usuario usuario = new Usuario();
 		Demanda demandaEx = new Demanda();
 		String titulo = "Titulo Demanda";
 		
@@ -70,7 +70,7 @@ class UserTest {
 	@Test
 	void testUserLoopException() throws Exception {
 		provideInput("9");
-		User.userLoop();
+		Usuario.userLoop();
 		
 		String output = getOutput();
 		assertTrue(output.contains("Quem eh voce?\n[1] Cliente\n[2] Avaliador\n[3] Desenvolvedor"));

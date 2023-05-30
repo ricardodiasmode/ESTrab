@@ -81,9 +81,9 @@ class AvaliadorTest {
 
 		// Realizar mock das entradas do usuário 
 		clientTest.editarDemanda();
-        when(Client.Digita()).thenReturn(nameTask);
-        when(Client.Digita()).thenReturn(descTask);
-        when(Client.Digita()).thenReturn(deadlineTask);
+        when(Client.lerInput()).thenReturn(nameTask);
+        when(Client.lerInput()).thenReturn(descTask);
+        when(Client.lerInput()).thenReturn(deadlineTask);
 
         // Validar se as alterações foram relamente feitas
 		assertEquals(nameTask, newDemanda.getTitulo());

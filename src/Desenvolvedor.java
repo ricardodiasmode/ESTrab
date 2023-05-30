@@ -1,20 +1,20 @@
 import java.time.LocalDate;
 
-class Desenvolvedor extends User {
+class Desenvolvedor extends Usuario {
 
     public void criarTarefaDaDemanda() throws Exception  {
         System.out.println("Escolha uma demanda para criar tarefa:");
         printarDemandas();
-        int DemandaSelecionada = DigitaInt();
-        Tarefa TarefaAtual = new Tarefa();
+        int demandaSelecionada = lerInputInteiro();
+        Tarefa tarefaAtual = new Tarefa();
         System.out.println("Digite o nome da tarefa:");
-        TarefaAtual.setTitulo(Digita());
+        tarefaAtual.setTitulo(lerInput());
         System.out.println("Informe a descricao da tarefa:");
-        TarefaAtual.setDescricao(Digita());
-        TarefaAtual.setDataDeCriacao(LocalDate.now());
+        tarefaAtual.setDescricao(lerInput());
+        tarefaAtual.setDataDeCriacao(LocalDate.now());
         System.out.println("Informe o prazo em dias:");
-        TarefaAtual.setPrazoEmDias(DigitaInt());
-        Demandas.get(DemandaSelecionada).setTarefas(TarefaAtual);
+        tarefaAtual.setPrazoEmDias(lerInputInteiro());
+        demandas.get(demandaSelecionada).setTarefas(tarefaAtual);
     }
 
     public void desenvolvedorLoop() throws Exception  {
@@ -23,18 +23,18 @@ class Desenvolvedor extends User {
             System.out.println("Ola Desenvolvedor. O que deseja?");
             System.out.println("[1] Visualizar demanda\n[2] Criar tarefa da demanda\n[3] Entrar no chat\n[4] Voltar para menu");
             
-            int Choice = DigitaInt();
-            if(Choice == 1) {
+            int choice = lerInputInteiro();
+            if(choice == 1) {
                 this.consultarDemanda();
-            } else if (Choice == 2) {
+            } else if (choice == 2) {
                 this.criarTarefaDaDemanda();
-            } else if (Choice == 3){ 
+            } else if (choice == 3){ 
                 System.out.println("Comming Soon!");
                 break;
-            } else if (Choice == 4){
+            } else if (choice == 4){
                 break;
             } else {
-            	System.out.println("Error character Typed: " + Choice);
+            	System.out.println("Error character Typed: " + choice);
                 break;
             }
         }

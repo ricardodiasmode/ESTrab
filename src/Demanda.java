@@ -13,13 +13,13 @@ class Demanda {
 	public static final int ALTA = 3;
 
     private String Titulo;
-    private String Descricao;
-    private int Situacao = NAO_INICIADA;
-    private int Prioridade = BACKLOG;
-    private LocalDate DataDeCriacao;
-    private LocalDate DataDeEncerramento;
-    private int PrazoEmDias;
-    private Vector<Tarefa> Tarefas;
+    private String descricao;
+    private int situacao = NAO_INICIADA;
+    private int prioridade = BACKLOG;
+    private LocalDate dataDeCriacao;
+    private LocalDate dataDeEncerramento;
+    private int prazoEmDias;
+    private Vector<Tarefa> tarefas;
     
 	public String getTitulo() {
 		return this.Titulo;
@@ -30,74 +30,74 @@ class Demanda {
 	}
 	
 	public String getDescricao() {
-		return this.Descricao;
+		return this.descricao;
 	}
 	
 	public void setDescricao(String descricao) {
-		this.Descricao = descricao;
+		this.descricao = descricao;
 	}
 	
 	public int getSituacao() {
-		return this.Situacao;
+		return this.situacao;
 	}
 	
 	public void setSituacao(int situacao) {
-		this.Situacao = situacao;
+		this.situacao = situacao;
 	}
 	public int getPrioridade() {
-		return this.Prioridade;
+		return this.prioridade;
 	}
 	
 	public void setPrioridade(int prioridade) {
-		this.Prioridade = prioridade;
+		this.prioridade = prioridade;
 	}
 	
 	public LocalDate getDataDeCriacao() {
-		return this.DataDeCriacao;
+		return this.dataDeCriacao;
 	}
 	
 	public void setDataDeCriacao(LocalDate dataDeCriacao) {
-		this.DataDeCriacao = dataDeCriacao;
+		this.dataDeCriacao = dataDeCriacao;
 	}
 	
 	public LocalDate getDataDeEncerramento() {
-		return this.DataDeEncerramento;
+		return this.dataDeEncerramento;
 	}
 	
 	public void setDataDeEncerramento(LocalDate dataDeEncerramento) {
-		this.DataDeEncerramento = dataDeEncerramento;
+		this.dataDeEncerramento = dataDeEncerramento;
 	}
 	
 	public int getPrazoEmDias() {
-		return this.PrazoEmDias;
+		return this.prazoEmDias;
 	}
 	
 	public void setPrazoEmDias(int prazoEmDias) {
-		this.PrazoEmDias = prazoEmDias;
+		this.prazoEmDias = prazoEmDias;
 	}
 	
 	public Vector<Tarefa> getTarefas() {
-		return this.Tarefas;
+		return this.tarefas;
 	}
 	
 	public void setTarefas(Tarefa tarefas) {
-		this.Tarefas.add(tarefas);
+		this.tarefas.add(tarefas);
 	}
  
-	public void iniciaDemanda() {
-		if (this.Situacao == NAO_INICIADA) {
-			this.Situacao = EM_PROGRESSO;
-		} else if (this.Situacao == EM_PROGRESSO) {
+	public void iniciarDemanda() {
+		if (this.situacao == NAO_INICIADA) {
+			this.situacao = EM_PROGRESSO;
+		} else if (this.situacao == EM_PROGRESSO) {
 			System.out.println("Essa demanda já foi iniciada");
-		} else if (this.Situacao == FINALIZADA) {
+		} else if (this.situacao == FINALIZADA) {
 			System.out.println("Essa demanda já foi finalizada");
 		}
 	}
 
-	public void finalizaDemanda() {
-		if (this.Situacao == NAO_INICIADA || this.Situacao == EM_PROGRESSO) {
-			this.Situacao = FINALIZADA;
-		} else if (this.Situacao == FINALIZADA) {
+	public void finalizarDemanda() {
+		if (this.situacao == NAO_INICIADA || this.situacao == EM_PROGRESSO) {
+			this.situacao = FINALIZADA;
+		} else if (this.situacao == FINALIZADA) {
 			System.out.println("Essa demanda já foi finalizada");
 		}
 	}
