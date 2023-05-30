@@ -6,7 +6,10 @@ import org.junit.After;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
 
+import org.junit.platform.runner.JUnitPlatform;
+@SuppressWarnings({ "unused", "deprecation" })
 class AvaliadorTest {
 	
 	private final InputStream systemIn = System.in;
@@ -66,12 +69,11 @@ class AvaliadorTest {
 		assertEquals(0, avaliador.getDemandas().size());
 	}
 
-    @Ignore
 	@Test
 	void testEditarSoftware() throws Exception {
 		final String nameTask = "First Task";
 		final String descTask = "Creating My First Task";
-		final String deadlineTask = "60";
+		final int deadlineTask = 60;
 		
 		Client clientTest = new Client();
 		Demanda	newDemanda = new Demanda();
@@ -80,10 +82,10 @@ class AvaliadorTest {
         newDemanda.setPrazoEmDias(30);
 
 		// Realizar mock das entradas do usuário 
-		clientTest.editarDemanda();
+		clientTest.solicitarSoftware();
         when(Client.lerInput()).thenReturn(nameTask);
         when(Client.lerInput()).thenReturn(descTask);
-        when(Client.lerInput()).thenReturn(deadlineTask);
+        when(Client.lerInputInteiro()).thenReturn(deadlineTask);
 
         // Validar se as alterações foram relamente feitas
 		assertEquals(nameTask, newDemanda.getTitulo());

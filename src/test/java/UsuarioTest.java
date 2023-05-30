@@ -6,7 +6,10 @@ import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+
+import org.junit.platform.runner.JUnitPlatform;
+@SuppressWarnings({ "unused", "deprecation" })
+class UsuarioTest {
 	
 	private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
@@ -41,7 +44,7 @@ class UserTest {
 		
 		provideInput(input);
 
-		assertEquals(input, Usuario.Digita());
+		assertEquals(input, Usuario.lerInput());
 	}
 	
 	@Test
@@ -70,7 +73,7 @@ class UserTest {
 	@Test
 	void testUserLoopException() throws Exception {
 		provideInput("9");
-		Usuario.userLoop();
+		Usuario.loopDoUsuario();
 		
 		String output = getOutput();
 		assertTrue(output.contains("Quem eh voce?\n[1] Cliente\n[2] Avaliador\n[3] Desenvolvedor"));

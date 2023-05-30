@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
+import org.junit.platform.runner.JUnitPlatform;
+@SuppressWarnings({ "unused", "deprecation" })
 class DemandaTest {
 
     public static final int NAO_INICIADA = 0;
@@ -45,7 +48,7 @@ class DemandaTest {
     @Test
 	void testIniciaDemanda() {
         this.demanda.setSituacao(NAO_INICIADA);
-		this.demanda.iniciaDemanda();
+		this.demanda.iniciarDemanda();
 
         assertEquals(EM_PROGRESSO, this.demanda.getSituacao());
 	}
@@ -53,7 +56,7 @@ class DemandaTest {
     @Test
 	void testFinalizaDemanda() {
         this.demanda.setSituacao(EM_PROGRESSO);
-		this.demanda.finalizaDemanda();
+		this.demanda.finalizarDemanda();
 
         assertEquals(FINALIZADA, this.demanda.getSituacao());
 	}
@@ -61,7 +64,7 @@ class DemandaTest {
     @Test
 	void testIniciaDemandaIniciada() {
         this.demanda.setSituacao(EM_PROGRESSO);
-		this.demanda.iniciaDemanda();
+		this.demanda.iniciarDemanda();
 
         assertEquals("Essa demanda já foi iniciada\n", getOutput());
 	}
@@ -69,7 +72,7 @@ class DemandaTest {
     @Test
 	void testIniciaDemandaFinalizada() {
         this.demanda.setSituacao(FINALIZADA);
-		this.demanda.iniciaDemanda();
+		this.demanda.iniciarDemanda();
 
         assertEquals("Essa demanda já foi finalizada\n", getOutput());
 	}
@@ -77,7 +80,7 @@ class DemandaTest {
     @Test
 	void testFinalizaDemandaFinalizada() {
         this.demanda.setSituacao(FINALIZADA);
-		this.demanda.iniciaDemanda();
+		this.demanda.iniciarDemanda();
 
         assertEquals("Essa demanda já foi finalizada\n", getOutput());
 	}

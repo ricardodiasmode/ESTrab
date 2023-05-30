@@ -1,5 +1,4 @@
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 import java.io.*;
 
@@ -7,7 +6,11 @@ import org.junit.After;
 import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
 
+
+import org.junit.platform.runner.JUnitPlatform;
+@SuppressWarnings({ "unused", "deprecation" })
 class ClientTest {
 
 	private final InputStream systemIn = System.in;
@@ -37,21 +40,20 @@ class ClientTest {
         System.setOut(systemOut);
     }
 	
-	@Ignore
 	@Test
 	void testSolicitarSoftware() throws Exception {
 		final String nameTask = "First Task";
 		final String descTask = "Creating My First Task";
-		final String deadlineTask = "30";
+		final int deadlineTask = 30;
 		
 		Client clientTest = new Client();
 		Demanda	newDemanda = new Demanda();
 
 		// Realizar mock das entradas do usuário 
 		newDemanda = clientTest.solicitarSoftware();
-			when(Client.Digita()).thenReturn(nameTask);
-			when(Client.Digita()).thenReturn(descTask);
-			when(Client.Digita()).thenReturn(deadlineTask);
+			when(Client.lerInput()).thenReturn(nameTask);
+			when(Client.lerInput()).thenReturn(descTask);
+			when(Client.lerInputInteiro()).thenReturn(deadlineTask);
 		
 		assertEquals(nameTask, newDemanda.getTitulo());
 		assertEquals(descTask, newDemanda.getDescricao());

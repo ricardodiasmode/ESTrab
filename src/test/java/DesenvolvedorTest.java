@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.io.*;
 
@@ -7,6 +8,8 @@ import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import org.junit.platform.runner.JUnitPlatform;
+@SuppressWarnings({ "unused", "deprecation" })
 class DesenvolvedorTest {
 	
 	private final InputStream systemIn = System.in;
@@ -47,9 +50,9 @@ class DesenvolvedorTest {
 
 		// Realizar mock das entradas do usuário 
 		developer.criarTarefaDaDemanda();
-        when(Client.Digita()).thenReturn(nameTask);
-        when(Client.Digita()).thenReturn(descTask);
-        when(Client.Digita()).thenReturn(deadlineTask);
+        when(Client.lerInput()).thenReturn(nameTask);
+        when(Client.lerInput()).thenReturn(descTask);
+        when(Client.lerInput()).thenReturn(deadlineTask);
 		
         // Verificar se a tarefa foi criada
 		assertEquals(1, developer.getDemandas().size());

@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
+import org.junit.platform.runner.JUnitPlatform;
+@SuppressWarnings({ "unused", "deprecation" })
 class TarefaTest {
 
     public static final int NAO_INICIADA = 0;
@@ -52,7 +55,7 @@ class TarefaTest {
 
     @Test
 	void testFinalizaTarefa() {
-        this.demtaskanda.setSituacao(EM_PROGRESSO);
+        this.task.setSituacao(EM_PROGRESSO);
 		this.task.finalizaTarefa();
 
         assertEquals(FINALIZADA, this.task.getSituacao());
